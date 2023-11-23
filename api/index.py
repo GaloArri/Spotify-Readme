@@ -72,7 +72,23 @@ def generate_bars(bar_count, rainbow, theme):
         "#bf00ff",
         "#ff00ff",
     ]
-
+    match theme:
+        case "blue":
+            theme = "#13d9fc"
+        case "cherry":
+            theme = "#f98fa2"
+        case "violet":
+            theme = "#664679"
+        case "green":
+            theme = "#2eff8f"
+        case "orange":
+            theme = "#68223e"
+        case "purple":
+            theme = "#ff00ff"
+        case "white":
+            theme = "#cfcdcd"
+        case _:
+            theme = "#68223e"
     for i in range(bar_count):
         css += f""".bar:nth-child({i + 1}) {{
                 animation-duration: {randint(500, 750)}ms;
