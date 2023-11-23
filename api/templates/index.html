@@ -19,6 +19,22 @@
                     display: flex;
                     padding: 20px;
                     border-radius: 5px;
+                    {% if theme == 'dark' %}
+                        background: rgb(5, 0, 0),
+                    {% else %}
+                        background: #F6F8FA;
+                    {% endif %}
+                    {% if theme == 'red' %}
+                        background: rgb(5, 0, 0),
+                    {% else %}
+                        background: #F6F8FA;
+                    {% endif %}
+                    {% if theme == 'blue' %}
+                        background: rgb(5, 0, 0),
+                    {% else %}
+                        background: #F6F8FA;
+                    {% endif %}
+
                     
                 }
                 .scan-code {
@@ -27,13 +43,17 @@
                     width: 120px;
                     height: 100%;
                     border-radius: 5px;
-                  
+                    {% if theme == 'dark' %}
+                        filter: invert(100%);
+                    {% endif %}
                 }
                 aside {
                     width: 485px;
                     display: flex;
                     position: relative;
-                 
+                    {% if scan_code %}
+                        left: -70px;
+                    {% endif %}
                 }
                 .cover {
                     width: 120px;
@@ -44,7 +64,11 @@
                     {% else %}
                     border-radius: 10px;
                     {% endif %}
-                    
+                    {% if theme == 'dark' %}
+                        box-shadow: 0 0 10px 5px #1b2027;
+                    {% else %}
+                        box-shadow: 0 0 10px 5px #f1f3f5;
+                    {% endif %}
                 }
                 section {
                     padding-left: 20px;
@@ -76,7 +100,11 @@
                     {% if not scan_code %}
                         margin-left: 10px;
                     {% endif %}
-                   
+                    {% if theme == 'dark' %}
+                        color: aliceblue;
+                    {% else %}
+                        color: #161B22;;
+                    {% endif %}
                 }
                 p {
                     margin-top: 5px;
@@ -87,7 +115,11 @@
                     display: block;
                     overflow: hidden;
                     max-width: 260px;
-     
+                    {% if theme == 'dark' %}
+                        color: rgba(240, 248, 255, calc(2/3));
+                    {% else %}
+                        color: rgba(22, 27, 34, calc(2/3));
+                    {% endif %}
                 }
                 .logo {
                     width: 24px;
@@ -138,7 +170,7 @@
                             <div class="info">
                                 <div class="top">
                                     {% if not scan_code %}
-                                        <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
+                                        
                                     {% endif %}
                                     <h1>{{song}}</h1>
                                 </div>
