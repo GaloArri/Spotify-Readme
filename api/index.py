@@ -43,20 +43,20 @@ def spotify_request(endpoint):
     return {} if r.status_code == 204 else r.json()
 
 
-def generate_bars(bar_count, rainbow):
+def generate_bars(bar_count, rainbow, theme):
     """Build the HTML/CSS snippets for the EQ bars to be injected"""
     bars = "".join(["<div class='bar'></div>" for _ in range(bar_count)])
     css = "<style>"
     if rainbow and rainbow != "false" and rainbow != "0":
         css += ".bar-container { animation-duration: 2s; }"
     spectrum = [
-        "#ff0000",
-        "#ff4000",
-        "#ff8000",
-        "#ffbf00",
-        "#ffff00",
-        "#bfff00",
-        "#80ff00",
+        "#68223e",
+        "#68223e",
+        "#68223e",
+        "#68223e",
+        "#68223e",
+        "#68223e",
+        "#68223e",
         "#40ff00",
         "#00ff00",
         "#00ff40",
@@ -72,10 +72,12 @@ def generate_bars(bar_count, rainbow):
         "#bf00ff",
         "#ff00ff",
     ]
+    if theme == 'red':
+        "background:"
     for i in range(bar_count):
         css += f""".bar:nth-child({i + 1}) {{
                 animation-duration: {randint(500, 750)}ms;
-                background: {spectrum[i] if rainbow and rainbow != 'false' and rainbow != '0' else '#24D255'};
+                background: {spectrum[i] if rainbow and rainbow != 'false' and rainbow != '0' else 'red'};
             }}"""
     return f"{bars}{css}</style>"
 
@@ -120,7 +122,7 @@ def make_svg(spin, scan, theme, rainbow):
     return render_template(
         "index.html",
         **{
-            "bars": generate_bars(bar_count, rainbow),
+            "bars": generate_bars(bar_count, rainbow, theme),
             "artist": item["artists"][0]["name"],
             "song": item["name"],
             "image": image,
