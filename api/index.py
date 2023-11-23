@@ -72,12 +72,11 @@ def generate_bars(bar_count, rainbow, theme):
         "#bf00ff",
         "#ff00ff",
     ]
-    if theme == 'red':
-        "background:"
+
     for i in range(bar_count):
         css += f""".bar:nth-child({i + 1}) {{
                 animation-duration: {randint(500, 750)}ms;
-                background: {spectrum[i] if rainbow and rainbow != 'false' and rainbow != '0' else 'red'};
+                background: {spectrum[i] if rainbow and rainbow != 'false' and rainbow != '0' else theme};
             }}"""
     return f"{bars}{css}</style>"
 
