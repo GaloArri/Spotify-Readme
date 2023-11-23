@@ -74,25 +74,25 @@ def generate_bars(bar_count, rainbow, theme):
     ]
     match theme:
         case "blue":
-            theme = "#13d9fc"
+            color_hexadecimal = "#13d9fc"
         case "cherry":
-            theme = "#f98fa2"
+            color_hexadecimal = "#f98fa2"
         case "violet":
-            theme = "#664679"
+            color_hexadecimal = "#664679"
         case "green":
-            theme = "#2eff8f"
+            color_hexadecimal = "#2eff8f"
         case "orange":
-            theme = "#68223e"
+            color_hexadecimal = "#68223e"
         case "purple":
-            theme = "#ff00ff"
+            color_hexadecimal = "#ff00ff"
         case "white":
-            theme = "#cfcdcd"
+            color_hexadecimal = "#cfcdcd"
         case _:
-            theme = "#68223e"
+            color_hexadecimal = "#68223e"
     for i in range(bar_count):
         css += f""".bar:nth-child({i + 1}) {{
                 animation-duration: {randint(500, 750)}ms;
-                background: {spectrum[i] if rainbow and rainbow != 'false' and rainbow != '0' else theme};
+                background: {spectrum[i] if rainbow and rainbow != 'false' and rainbow != '0' else color_hexadecimal};
             }}"""
     return f"{bars}{css}</style>"
 
